@@ -11,7 +11,7 @@ public abstract class Pokemon {
     private Pokemon() {//O(1)
     }
     //O(1)
-    public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo, String estado) {
+    public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo, Estado estado) {
         this.nombre = nombre;
         this.salud = salud;
         this.puntosDeAtaque = puntosDeAtaque;
@@ -47,7 +47,7 @@ public abstract class Pokemon {
         return tipo;
     }
 
-    public String getEstado() { //O(1)
+    public Estado getEstado() { //O(1)
         return estado;
     }
 
@@ -67,7 +67,7 @@ public abstract class Pokemon {
         this.tipo = tipo;
     }
 
-    public void setEstado(String estado) { //O(1)
+    public void setEstado(Estado estado) { //O(1)
         this.estado = estado;
     }
     
