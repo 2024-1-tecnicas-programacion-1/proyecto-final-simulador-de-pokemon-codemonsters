@@ -23,15 +23,6 @@ public class Entrenador{
             pokemon.entrenar();   //20 de salud y 5 de ataque         
         } 
     }
-    public List<Pokemon> mostrarPokemones() {
-        if (!pokemones.isEmpty()) { //si la lista no esta vacia entonces..
-            for (int i = 0; i < pokemones.size(); i++) {
-                Pokemon pokemon = pokemones.get(i);
-                }
-            return pokemones;
-        }
-        return pokemones;
-    }
      public Pokemon prepararBatalla() {
         if (!pokemones.isEmpty()) { //saber si la lista de pokemones no esta vacia
             Pokemon pokemonParaBatalla = pokemones.get(0); // Selecciona el primer Pokémon del equipo

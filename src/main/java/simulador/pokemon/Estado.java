@@ -8,6 +8,6 @@ package simulador.pokemon;
  *
  * @author USUARIO
  */
-public class Estado {
-    
+public enum Estado {
+    NORMAL;
 }

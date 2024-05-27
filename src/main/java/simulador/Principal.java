@@ -1,4 +1,5 @@
 package simulador;
+import java.util.List;
 import java.util.Scanner;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Pokemon;
@@ -38,6 +39,10 @@ public class Principal {
                         //ver lista de entrenadores
                         break;
                     case "3":
+                        String nombreEntrenador = lector.next();
+                        // Buscar entrenador
+                        Entrenador entrenadorEncontrado = null;
+                        
                         System.out.println("Elige una opcion:");
                         System.out.println("1. Ver equipo de Pokémones");
                         System.out.println("2. Agregar Pokémon al equipo");
@@ -47,6 +52,13 @@ public class Principal {
                         switch (opcionSubSubMenu1){
                             case"1":
                                 //mostrar equipo de pokemones
+                                List<Pokemon> pokemonesDelEntrenador = entrenadorEncontrado.getPokemones();
+                                if (!pokemonesDelEntrenador.isEmpty()) { //si la lista no esta vacia entonces..
+                                    for (int i = 0; i < pokemonesDelEntrenador.size(); i++) {
+                                        Pokemon pokemon = pokemonesDelEntrenador.get(i);
+                                        System.out.println(pokemon.getNombre());
+                                    }
+                                }
                                 break;
                             case"2":
                                 System.out.println("Agregar un nuevo pokemon");//agregar pokemon
