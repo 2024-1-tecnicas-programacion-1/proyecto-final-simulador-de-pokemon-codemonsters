@@ -78,8 +78,9 @@ public class Principal {
                 System.out.println("5. Comenzar batalla");
                 System.out.println("6. Volver al menú principal");
                 
-                
-        }
-               
+            case"4":
+                System.out.println("Saliendo del juego...Hasta pronto");
+                break;  
+        }               
     }
 }
