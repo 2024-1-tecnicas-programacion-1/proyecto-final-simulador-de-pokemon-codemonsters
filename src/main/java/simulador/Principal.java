@@ -1,5 +1,7 @@
 package simulador;
 import java.util.Scanner;
+import simulador.entrenador.Entrenador;
+import simulador.pokemon.Pokemon;
 public class Principal {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
@@ -21,8 +23,17 @@ public class Principal {
                 String opcionSubMenu1 = lector.next();
                 switch (opcionSubMenu1){
                     case "1":
-                        //registrar un nuevo entrenador
+                        System.out.println("Registra un nuevo entrenador");
+                        System.out.println("Ingresa el nombre: ");
+                        String nombre = lector.next();
+ 
+                        Entrenador entrenador1 = new Entrenador(nombre);//registrar un nuevo entrenador
+                        System.out.println("Tu entrenador se registro");
+                        System.out.println("Nombre: "+nombre);
                         break;
+                        
+                        
+                        
                     case "2":
                         //ver lista de entrenadores
                         break;
@@ -38,7 +49,8 @@ public class Principal {
                                 //mostrar equipo de pokemones
                                 break;
                             case"2":
-                                //agregar pokemon
+                                System.out.println("Agregar un nuevo pokemon");//agregar pokemon
+                                System.out.println("");
                                 break;
                             case"3":
                                 //entrenar al pokemon
@@ -60,7 +72,8 @@ public class Principal {
                 String opcionSubMenu2 = lector.next();
                 switch(opcionSubMenu2){
                     case"1":
-                        //mostrar todos los pokemones registrados
+                        System.out.println("Pokémones en el equipo:");
+                        
                         break;
                     case"2":
                         //registrar nuevo pokemon

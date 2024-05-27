@@ -7,9 +7,6 @@ public abstract class Pokemon {
     private int puntosDeAtaque; 
     private TipoPokemon tipo; 
     private Estado estado; 
-
-    private Pokemon() {//O(1)
-    }
     //O(1)
     public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo, Estado estado) {
         this.nombre = nombre;
@@ -19,16 +16,21 @@ public abstract class Pokemon {
         this.estado = estado;
     }
     
-    public void atacar(Pokemon oponente){ //O(1)
-        
+    public void atacar(Pokemon oponente) {
+        int daño = oponente.getPuntosDeAtaque() - oponente.getSalud();
+        if (daño < 0) {
+            daño = 0;
+        }
+        oponente.recibirDaño(daño);
     }
     
     public void recibirDaño(int daño) { //O(1) 
-        
+        this.salud -= daño;
     }
     
     public void entrenar(){  //O(1) 
-        
+       this.salud = salud+20;
+       this.puntosDeAtaque = puntosDeAtaque+5;
     }
 
     public String getNombre() { //O(1)

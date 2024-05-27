@@ -8,27 +8,17 @@ public class Batalla {
 
         while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) {
             // El primer Pokémon ataca al segundo
-            atacar(pokemon1, pokemon2);
-            if (pokemon2.getSalud() <= 0) {
-                System.out.println(pokemon2.getNombre() + " ha sido derrotado. " + pokemon1.getNombre() + " es el ganador.");
-                return;
-            }
-
-            // El segundo Pokémon ataca al primero
-            atacar(pokemon2, pokemon1);
-            if (pokemon1.getSalud() <= 0) {
-                System.out.println(pokemon1.getNombre() + " ha sido derrotado. " + pokemon2.getNombre() + " es el ganador.");
-                return;
+            pokemon1.atacar(pokemon2);
+            if (pokemon2.getSalud() > 0) {
+                // El segundo Pokémon ataca al primero
+                pokemon2.atacar(pokemon1);
             }
         }
-    }
-    public int atacar(Pokemon atacante, Pokemon defensor) {
-        int daño = atacante.getPuntosDeAtaque() - defensor.getSalud();
-        if (daño < 0) {
-            daño = 0;
+        if (pokemon2.getSalud() <= 0) {
+            System.out.println(pokemon1.getNombre() + " ha sido derrotado. " + pokemon2.getNombre() + " es el ganador.");
+        }else{
+        System.out.println(pokemon2.getNombre() + " ha sido derrotado. " + pokemon1.getNombre() + " es el ganador.");
         }
-        defensor.setSalud(defensor.getSalud() - daño);
-        return daño;
-    }
+}
 }
 

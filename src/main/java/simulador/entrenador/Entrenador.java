@@ -1,4 +1,5 @@
 package simulador.entrenador;
+import java.util.LinkedList;
 import java.util.List;
 
 import simulador.pokemon.Pokemon;
@@ -7,9 +8,9 @@ public class Entrenador{
     private String nombre;
     private List<Pokemon> pokemones;
     
-    public Entrenador(String nombre,List<Pokemon> pokemones){
+    public Entrenador(String nombre){
         this.nombre=nombre;
-        this.pokemones=pokemones;
+        this.pokemones = new LinkedList<>();
                 
     }
     public void agregarPokemon(Pokemon pokemon) {
@@ -19,19 +20,17 @@ public class Entrenador{
     }
     public void entrenarPokemon(Pokemon pokemon) {
         if (pokemones.contains(pokemon)) {
-            pokemon.entrenar();           
+            pokemon.entrenar();   //20 de salud y 5 de ataque         
         } 
     }
-    public void mostrarPokemones() {
+    public List<Pokemon> mostrarPokemones() {
         if (!pokemones.isEmpty()) { //si la lista no esta vacia entonces..
-            System.out.println("Pokémones en el equipo:");
             for (int i = 0; i < pokemones.size(); i++) {
                 Pokemon pokemon = pokemones.get(i);
-                System.out.println(pokemon);
-}
-        } else {
-            System.out.println("El equipo no tiene Pokémones.");
+                }
+            return pokemones;
         }
+        return pokemones;
     }
      public Pokemon prepararBatalla() {
         if (!pokemones.isEmpty()) { //saber si la lista de pokemones no esta vacia
