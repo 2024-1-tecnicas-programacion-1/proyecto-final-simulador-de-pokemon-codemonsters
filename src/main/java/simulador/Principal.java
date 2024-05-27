@@ -31,10 +31,8 @@ public class Principal {
                         Entrenador entrenador1 = new Entrenador(nombre);//registrar un nuevo entrenador
                         System.out.println("Tu entrenador se registro");
                         System.out.println("Nombre: "+nombre);
-                        break;
-                        
-                        
-                        
+                        return;
+                    
                     case "2":
                         //ver lista de entrenadores
                         break;
@@ -62,7 +60,37 @@ public class Principal {
                                 break;
                             case"2":
                                 System.out.println("Agregar un nuevo pokemon");//agregar pokemon
-                                System.out.println("");
+                                System.out.println("Selecciona un nuevo pokemon de la siguiente lista: ");
+                                System.out.println("● Ponyta (Fuego)\n" +
+                                                "○ Salud (HP): 50\n" +
+                                                "○ Ataque (ATK): 85\n" +
+                                                "● Staryu (Agua)\n" +
+                                                "○ Salud (HP): 30\n" +
+                                                "○ Ataque (ATK): 45\n" +
+                                                "● Bellsprout (Planta/Veneno)\n" +
+                                                "○ Salud (HP): 50\n" +
+                                                "○ Ataque (ATK): 75\n" +
+                                                "● Magnemite (Eléctrico/Acero)\n" +
+                                                "○ Salud (HP): 25\n" +
+                                                "○ Ataque (ATK): 35\n" +
+                                                "● Abra (Psíquico)\n" +
+                                                "○ Salud (HP): 25\n" +
+                                                "○ Ataque (ATK): 20\n" +
+                                                "● Onix (Roca/Tierra)\n" +
+                                                "○ Salud (HP): 35\n" +
+                                                "○ Ataque (ATK): 45\n" +
+                                                "● Doduo (Normal/Volador)\n" +
+                                                "○ Salud (HP): 35\n" +
+                                                "○ Ataque (ATK): 85\n" +
+                                                "● Meowth (Normal)\n" +
+                                                "○ Salud (HP): 40\n" +
+                                                "○ Ataque (ATK): 45\n" +
+                                                "● Machop (Lucha)\n" +
+                                                "○ Salud (HP): 70\n" +
+                                                "○ Ataque (ATK): 80\n" +
+                                                "● Ekans (Veneno)\n" +
+                                                "○ Salud (HP): 35\n" +
+                                                "○ Ataque (ATK): 60");
                                 break;
                             case"3":
                                 //entrenar al pokemon
@@ -97,6 +125,7 @@ public class Principal {
             case"3":
                 System.out.println("Opción elegida: Iniciar batalla");
                 System.out.println("1. Elegir entrenador 1");
+                
                 System.out.println("2. Elegir entrenador 2");
                 System.out.println("3. Seleccionar Pokémon de entrenador 1");
                 System.out.println("4. Seleccionar Pokémon de entrenador 2");
