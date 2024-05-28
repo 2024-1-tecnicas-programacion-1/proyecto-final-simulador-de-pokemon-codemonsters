@@ -4,10 +4,8 @@
  */
 package simulador.pokemon;
 
-/**
- *
- * @author USUARIO
- */
-public class Staryu {
-    
+public class Staryu extends Pokemon {
+    public Staryu() {
+        super("Staryu", 30, 45, TipoPokemon.AGUA, Estado.NORMAL);
+    }
 }

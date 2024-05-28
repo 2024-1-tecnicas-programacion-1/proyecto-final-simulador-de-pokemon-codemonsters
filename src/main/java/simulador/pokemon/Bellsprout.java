@@ -4,10 +4,8 @@
  */
 package simulador.pokemon;
 
-/**
- *
- * @author USUARIO
- */
-public class Bellsprout {
-    
+public class Bellsprout extends Pokemon {
+    public Bellsprout() {
+        super("Bellsprout", 50, 75, TipoPokemon.PLANTA, Estado.NORMAL );
+    }
 }

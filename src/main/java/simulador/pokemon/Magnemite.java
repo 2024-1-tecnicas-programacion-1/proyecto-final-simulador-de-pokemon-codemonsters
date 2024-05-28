@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package simulador.pokemon;
 
-/**
- *
- * @author USUARIO
- */
-public class Magnemite {
-    
+
+public class Magnemite extends Pokemon {
+    public Magnemite() {
+        super("Magnemite", 25, 35, TipoPokemon.ELECTRICO, Estado.NORMAL);
+    }
 }
