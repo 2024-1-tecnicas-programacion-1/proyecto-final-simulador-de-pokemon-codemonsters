@@ -1,8 +1,19 @@
 package simulador;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import simulador.entrenador.Entrenador;
+import simulador.pokemon.Abra;
+import simulador.pokemon.Bellsprout;
+import simulador.pokemon.Doduo;
+import simulador.pokemon.Ekans;
+import simulador.pokemon.Machop;
+import simulador.pokemon.Magnemite;
+import simulador.pokemon.Meowth;
+import simulador.pokemon.Onix;
 import simulador.pokemon.Pokemon;
+import simulador.pokemon.Ponyta;
+import simulador.pokemon.Staryu;
 public class Principal {
     public static void main(String[] args) {
         Scanner lector = new Scanner(System.in);
@@ -109,10 +120,41 @@ public class Principal {
                 System.out.println("1. Ver todos los Pokémones registrados");
                 System.out.println("2. Registrar nuevo Pokémon");
                 System.out.println("3. Volver al menú principal");
+                Ponyta ponyta = new Ponyta();
+                Staryu staryu = new Staryu();
+                Bellsprout bellsprout = new Bellsprout();
+                Magnemite magnemite = new Magnemite();
+                Abra abra = new Abra();
+                Onix onix = new Onix();
+                Doduo doduo = new Doduo();
+                Meowth meowth = new Meowth();
+                Machop machop = new Machop();
+                Ekans ekans = new Ekans();
+
+                // Mostrar información de cada Pokémon
+                
+                
                 String opcionSubMenu2 = lector.next();
                 switch(opcionSubMenu2){
                     case"1":
-                        System.out.println("Pokémones en el equipo:");
+                        List<Object> pokemonList = new ArrayList<>();
+        
+                        // Añadir los Pokémon a la lista
+                        pokemonList.add(ponyta);
+                        pokemonList.add(staryu);
+                        pokemonList.add(bellsprout);
+                        pokemonList.add(magnemite);
+                        pokemonList.add(abra);
+                        pokemonList.add(onix);
+                        pokemonList.add(doduo);
+                        pokemonList.add(meowth);
+                        pokemonList.add(machop);
+                        pokemonList.add(ekans);
+                        System.out.println("Todos los pokémones registrados: ");
+                        for (int i = 0; i < pokemonList.size(); i++) {
+                            Pokemon pokemon = (Pokemon) pokemonList.get(i);
+                            System.out.println((i +1) + pokemon.getNombre() + "\n "+"Tipo: " + pokemon.getTipoPokemon()+"\n" +"Salud: " + pokemon.getSalud() + "\n " + "Ataque: " + pokemon.getPuntosDeAtaque()+"\n" );
+                        }
                         
                         break;
                     case"2":
