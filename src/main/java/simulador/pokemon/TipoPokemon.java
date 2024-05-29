@@ -1,10 +1,13 @@
 package simulador.pokemon;
 
-public enum TipoPokemon{ 
+public enum TipoPokemon{ //O(1)
+    
     FUEGO,AGUA,PLANTA,VENENO,ELECTRICO,PSIQUICO,ROCA,TIERRA,NORMAL,VOLADOR,HADA,LUCHA,ACERO,BICHO,HIELO,FANTASMA;
     
-    public static double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){
-        double[][] efectividad = {
+    public static double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){ 
+        
+        double[][] efectividad = { //O(1)
+            
          // FUEGO  AGUA  PLANTA VENENO ELECT PSIQ ROCA TIERR NORM VOLADOR HADA LUCHA ACERO BICHO HIELO FANTA 
             { 1,    0.5,   2,    1,    1,    1,   0.5,   1,    1,    1,    1,    1,   0.5,   2,    2,    1 }, // FUEGO
             { 2,     1,   0.5,   1,    1,    1,    2,    1,    1,    1,    1,    1,    1,    1,    1,    1 }, // AGUA
@@ -22,8 +25,8 @@ public enum TipoPokemon{
             { 1,     1,    2,    1,    1,    1,    1,    1,    1,    2,    1,    1,   0.5,   1,    1,   0.5 }, // BICHO
             { 1,     1,    2,    1,    1,    1,    1,    2,    1,    1,    1,    1,    1,    1,    1,    1 }, // HIELO
             { 1,     1,    1,   0.5,   1,    1,    1,    1,    0,    1,    1,    1,    1,    1,    1,    2 }, // FANTASMA
-        };
+        }; 
 
         return efectividad[atacante.ordinal()][defensor.ordinal()]; 
-    }
+    } 
 }
