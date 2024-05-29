@@ -14,6 +14,13 @@ import simulador.pokemon.Onix;
 import simulador.pokemon.Pokemon;
 import simulador.pokemon.Ponyta;
 import simulador.pokemon.Staryu;
+/**
+ * Clase principal
+ * Se crea scanner, List(entrandor) y List(pokemon)
+ * Pivate static final para poder utilizarlos en todo el codigo y para que no pueda ser cambiada después de ser asignada.
+ * Inmutabilidad
+ * 
+ */
 public class Principal {
     private static final Scanner lector = new Scanner(System.in);
     private static final List<Entrenador> entrenadores = new ArrayList<>();
