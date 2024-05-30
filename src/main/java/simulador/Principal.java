@@ -29,6 +29,12 @@ public class Principal {
     private static final Scanner lector = new Scanner(System.in); 
     private static final List<Entrenador> entrenadores = new ArrayList<>(); 
     private static final List<Pokemon> pokemones = new ArrayList<>(); 
+    /**
+     * Metodo principal main
+     * Inicializa todos los pokemones que hay en el juego y llama al metodo mostrarMenuPrincipal
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @param args 
+     */
 
     public static void main(String[] args) { //O(1)
         pokemones.add(new Ponyta()); 
@@ -43,6 +49,11 @@ public class Principal {
         pokemones.add(new Ekans()); 
         mostrarMenuPrincipal(); 
     } 
+    /**
+     * Metodo menu principal
+     * Muestra el menu principal del juego y lee la opcion del usuario por consola
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
 
     private static void mostrarMenuPrincipal() { 
         
@@ -68,14 +79,19 @@ public class Principal {
                     iniciarBatalla();
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
-                    return; 
+                    return; //sale del juego
                 default: 
                     System.out.println("Opción no válida, por favor intenta de nuevo."); 
-                    
+                    break; 
             } 
         } 
     }
-
+    /**
+     * metodo de gestionar entrenadores 
+     * un submenu que lee la respuesta del uduario por consola
+     * para cada una de las opciones llama a un metodo correspondiente
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
     private static void gestionarEntrenadores() { //O(1)
         
         while (true) { 
@@ -86,7 +102,7 @@ public class Principal {
             System.out.println("4. Volver al menú principal"); 
             String opcion = lector.next(); 
 
-            switch (opcion) { //O(1)
+            switch (opcion) { //Complejidad temporal: O(1) Complejidad Constante.
                 
                 case "1": 
                     registrarEntrenador(); 
@@ -98,14 +114,18 @@ public class Principal {
                     seleccionarEntrenador(); 
                     break; 
                 case "4": 
-                    return; 
+                    return; //retorna al menu principal
                 default: 
                     System.out.println("Opción no válida, por favor intenta de nuevo."); 
                     
             } 
         } 
     }
-
+    /**
+     * Metodo registrar entrenador 
+     * ingresa el nombre y lo añade a la lista de entrenadores 
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
     private static void registrarEntrenador() { //O(1)
         
         System.out.println("Registra un nuevo entrenador"); 
@@ -115,8 +135,13 @@ public class Principal {
         System.out.println("Tu entrenador se registró. Nombre: " + nombre); 
         
     }
-
-    private static void verListaEntrenadores() { //O(N)
+    /**
+     * metodo ver lista de entrenadores
+     * muestra la lista de todos los entrenadores regustrados
+     * , en caso de que no halla ninguno muestra el mensaje "no hay entrenadores registrados 
+     * Complejidad lineal O(N) porque contiene un ciclo for.
+     */
+    private static void verListaEntrenadores() { //Complejidad lineal O(N) porque contiene un ciclo for.
         
         if (entrenadores.isEmpty()) { //Verificar si la lista está vacía
             System.out.println("No hay entrenadores registrados."); 
@@ -127,7 +152,13 @@ public class Principal {
         } 
         
     }
-
+    /**
+     * metodo seleccionar entrenador
+     * este metodo permite al usuario seleccionar un entrenador de los que estan registrados
+     * muestra una lista de los entrenadores registrados y lee la respuesta del usuario por consola como numero
+     * si la lista de entrenadores esta vacia muestra el mensaje "no hay entrenadores registrados"
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
     private static void seleccionarEntrenador() { //O(1)
         
         if (entrenadores.isEmpty()) { 
@@ -147,6 +178,11 @@ public class Principal {
         } 
         
     }
+    /**
+     * metodo iniciar batalla
+     * en este metodo se inicia la batalla entre dos pokemones
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
     private static void iniciarBatalla() { //O(1)
         
          if(pokemones.size() < 2) 
@@ -179,7 +215,13 @@ public class Principal {
          batalla.iniciarBatalla(pokemon1, pokemon2); 
         
     }
-
+    /**
+     * metodo gestionar equipo
+     * un submenu que permite al usuario gestionar el equipo, agregar un pokemon al equipo de los que ya existen y entrenar a un pokemon de su equipo
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     * 
+     */
     private static void gestionarEquipo(Entrenador entrenador) { //O(1)
         
         while (true) { 
@@ -210,8 +252,13 @@ public class Principal {
             } 
         } 
     }
-
-    private static void verEquipo(Entrenador entrenador) { //O(N)
+    /**
+     * metodo ver equipo
+     * metodo que muestra la lista de los pokemones que tiene el entrenador previamente seleccionado
+     * Complejidad lineal O(N) porque contiene un ciclo for.
+     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     */
+    private static void verEquipo(Entrenador entrenador) { //Complejidad lineal O(N) porque contiene un ciclo for.
         
         List<Pokemon> equipo = entrenador.getPokemones(); 
         if (equipo.isEmpty()) { 
@@ -223,12 +270,17 @@ public class Principal {
         } 
         
     }
-
+    /**
+     * metodo agregar pokemon al equipo
+     * este metodo permite al entrenador agregar un pokemon de la lista de pokemones del juego al equipo
+     * Complejidad lineal O(N) porque contiene un ciclo for.
+     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     */
     private static void agregarPokemonAlEquipo(Entrenador entrenador) { //O(N)
         
         System.out.println("Agregar un nuevo Pokémon al equipo de " + entrenador.getNombre()); 
         
-        for (int i = 0; i < pokemones.size(); i++) { 
+        for (int i = 0; i < pokemones.size(); i++) { //Complejidad lineal O(N) porque contiene un ciclo for.
             Pokemon pokemon = pokemones.get(i); 
             System.out.println((i + 1) + ". " + pokemon.getNombre() + " (Tipo: " + pokemon.getTipoPokemon() + ", Salud: " + pokemon.getSalud() + ", Ataque: " + pokemon.getPuntosDeAtaque() + ")"); 
         } 
@@ -244,13 +296,24 @@ public class Principal {
         } 
         
     } 
-    
+    /**
+     * metodo entrenar pokemon
+     * permite al entrenador, entrenar a un pokemon de su equipo
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @param entrenador recibe el parametro entrenador
+     */
     private static void entrenarPokemon(Entrenador entrenador) { 
         
         //Lógica para entrenar un pokemón 
         
     }
-
+    /**
+     * metodo gestionar pokemones
+     * este metodo permite al usuario gestionar los pokemones del juego
+     * ver todos los pojemones registrados y registrar nuevos pokemones
+     * tiene un submenu con un switch y lee la respuesta del usuario po consola
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
     private static void gestionarPokemones() { //O(1)
         
         while (true) { 
@@ -277,8 +340,12 @@ public class Principal {
         } 
         
     }
-
-    private static void verPokemonesRegistrados() { //O(N)
+    /**
+     * metodo ver pokemones registrados 
+     * este metodo muestra todos los pokemones que tiene el juego 
+     * Complejidad lineal O(N) porque contiene un ciclo for.
+     */
+    private static void verPokemonesRegistrados() { //Complejidad lineal O(N) porque contiene un ciclo for.
         
         System.out.println("Todos los Pokémones registrados: "); 
         
@@ -305,7 +372,7 @@ public class Principal {
     // Mostrar todos los tipos de Pokémon disponibles.
     TipoPokemon[] tipos = TipoPokemon.values();//Todos los valores de TipoPokemon, es decir todos los tipos registrados de pokémon.
     System.out.println("Tipos de Pokémon disponibles:");
-    for (int i = 0; i < tipos.length; i++) {
+    for (int i = 0; i < tipos.length; i++) {//Complejidad lineal O(N) porque contiene un ciclo for.
         System.out.println((i + 1) + "." + tipos[i]);
     }
     // Ingresar el tipo de pokémon.
