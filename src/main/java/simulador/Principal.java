@@ -137,10 +137,10 @@ public class Principal {
 
         verListaEntrenadores(); 
         System.out.print("Selecciona un entrenador por número: "); 
-        int index = lector.nextInt() - 1; 
+        int numEntrenador = lector.nextInt() - 1; 
 
-        if (index >= 0 && index < entrenadores.size()) { 
-            Entrenador entrenadorSeleccionado = entrenadores.get(index); 
+        if (numEntrenador >= 0 && numEntrenador < entrenadores.size()) { 
+            Entrenador entrenadorSeleccionado = entrenadores.get(numEntrenador); 
             gestionarEquipo(entrenadorSeleccionado); 
         } else { 
             System.out.println("Número de entrenador no válido."); 
@@ -183,6 +183,7 @@ public class Principal {
     private static void gestionarEquipo(Entrenador entrenador) { //O(1)
         
         while (true) { 
+            System.out.println("--GESTIONAR EQUIPO--");
             System.out.println("Gestionar equipo de " + entrenador.getNombre()); 
             System.out.println("1. Ver equipo de Pokémones"); 
             System.out.println("2. Agregar Pokémon al equipo"); 
