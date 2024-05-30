@@ -177,7 +177,7 @@ public class Principal {
                     break; 
                 case "3": 
                     /*Entrenador obj = new Entrenador(); 
-                    obj.entrenarPokemon();*/
+                    obj.entrenarPokemon();*/ // Lógica de entrenar pokemón.
                     break; 
                 case "4": 
                     return; 
