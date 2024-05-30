@@ -69,8 +69,7 @@ public class Principal {
                     gestionarPokemones(); 
                     break; 
                 case "3": 
-                    Batalla obj = new Batalla(); 
-                    obj.iniciarBatalla();
+                    iniciarBatalla();
                     break; 
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
@@ -151,6 +150,11 @@ public class Principal {
         } else { 
             System.out.println("Número de entrenador no válido."); 
         } 
+        
+    }
+    private static void iniciarBatalla() { //O(1)
+        
+        //TODA LA LOGICA DE INICIAR BATALLA
         
     }
 
