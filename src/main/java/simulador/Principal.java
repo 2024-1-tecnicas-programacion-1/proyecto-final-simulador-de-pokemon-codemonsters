@@ -309,11 +309,31 @@ public class Principal {
      * Complejidad temporal: O(1) Complejidad Constante.
      * @param entrenador recibe el parámetro entrenador.
      */
-    private static void entrenarPokemon(Entrenador entrenador) { 
-        
-        //Lógica para entrenar un pokemón 
-        
+    private static void entrenarPokemon(Entrenador entrenador) {
+    List<Pokemon> equipo = entrenador.getPokemones();
+    if (equipo.isEmpty()) {//para saber si la lista equipo esta vacia equipo.isEmpty
+        System.out.println("El equipo de Pokémon está vacío");
+    }else{
+
+    System.out.println("Selecciona el Pokémon que deseas entrenar:");
+
+    for (int i = 0; i < equipo.size(); i++) {//Complejidad lineal O(N) porque contiene un ciclo for.
+        Pokemon pokemon = equipo.get(i);
+        System.out.println((i + 1) + "." + pokemon.getNombre() + " (Salud: " + pokemon.getSalud() + ", Ataque: " + pokemon.getPuntosDeAtaque() + ")");
     }
+
+    System.out.print("Selecciona el número del Pokémon a entrenar: ");
+    int numPokemonEntrenar = lector.nextInt() - 1;
+
+    if (numPokemonEntrenar >= 0 && numPokemonEntrenar < equipo.size()) {
+        Pokemon pokemonSeleccionado = equipo.get(numPokemonEntrenar);
+        pokemonSeleccionado.entrenar();
+        System.out.println(pokemonSeleccionado.getNombre() + " ha sido entrenado. salud nueva: " + pokemonSeleccionado.getSalud() + ", ataque nuevo: " + pokemonSeleccionado.getPuntosDeAtaque());
+    } else {
+        System.out.println("Número de Pokémon no válido.");
+    }
+    }
+}
     /**
      * Método gestionar pokemones.
      * Este método permite al usuario gestionar los pokemones del juego.
