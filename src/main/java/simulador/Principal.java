@@ -161,10 +161,10 @@ public class Principal {
      */
     private static void seleccionarEntrenador() { //O(1)
         
-        if (entrenadores.isEmpty()) { 
+        if (entrenadores.isEmpty()) {//si no hay entrenadores en la lista 
             System.out.println("No hay entrenadores registrados."); 
-            return; 
-        }
+        }else {
+        
 
         verListaEntrenadores(); 
         System.out.print("Selecciona un entrenador por número: "); 
@@ -176,7 +176,7 @@ public class Principal {
         } else { 
             System.out.println("Número de entrenador no válido."); 
         } 
-        
+        }
     }
     /**
      * Método iniciar batalla.
@@ -184,13 +184,66 @@ public class Principal {
      * Complejidad temporal: O(1) Complejidad Constante.
      */
     private static void iniciarBatalla() { //O(1)
+        if(entrenadores.size() < 2 ) {
+            System.out.println("Debe haber al menos dos entrenadores registrados para iniciar la batalla. ");
+        }else{
+            System.out.println("Selecciona el primer entrenador: ");
+            Entrenador oponente1 = seleccionarEntrenadorBatalla();
+            if (oponente1 == null) return;
+            System.out.println("Selecciona el segundo entrenador: ");
+            Entrenador oponente2 = seleccionarEntrenadorBatalla();
+            if (oponente2 == null) return;
         
-        seleccionarEntrenador(); 
-         
+        System.out.println(oponente1.getNombre() + "Selecciona tu pokemon: ");
+        Pokemon pokemon1 = seleccionarPokemonOponente(oponente1);
+        if (pokemon1 == null) return;
+        System.out.println(oponente2.getNombre() + "Selecciona tu pokemon: ");
+        Pokemon pokemon2 = seleccionarPokemonOponente(oponente2);
+        if (pokemon2 == null) return;
         
-        
+        System.out.println("Iniciando la batalla entre "+ pokemon1.getNombre()+ " y " + pokemon2.getNombre());
+        Batalla batalla = new Batalla();
+        batalla.iniciarBatalla(pokemon1, pokemon2);
+        }
     }
     /**
+     * metodo seleccionar entrenador de batalla
+     * este metodo es para seleccionar el primer y segundo oponente de la batalla
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @return 
+     */
+    private static Entrenador seleccionarEntrenadorBatalla() {
+        verListaEntrenadores();
+        System.out.println("Selecciona un entrenador por numero: ");
+        int numOponente = lector.nextInt() - 1; //-1 porque el indice comienza en 0
+        if (numOponente >=0 && numOponente<entrenadores.size()){
+            return entrenadores.get(numOponente);      
+        }else{
+            System.out.println("Número de entrenador no válido");
+            return null;
+        }
+    /**
+     * metodo seleccionar pokemon
+     * este metodo es para seleccionar los pokemones para la batalla de ambos oponentes
+     * Complejidad temporal: O(1) Complejidad Constante.
+     */
+    }
+    private static Pokemon seleccionarPokemonOponente(Entrenador entrenador) {
+    List<Pokemon> equipo = entrenador.getPokemones();
+    for (int i = 0; i < equipo.size(); i++) {
+        Pokemon pokemon = equipo.get(i);
+        System.out.println((i + 1) + ". " + pokemon.getNombre() + " (Salud: " + pokemon.getSalud() + ", Ataque: " + pokemon.getPuntosDeAtaque() + ")");
+    }
+    System.out.print("Selecciona un Pokémon por número: ");
+    int numPokemon = lector.nextInt() - 1;
+    if (numPokemon >= 0 && numPokemon < equipo.size()) {
+        return equipo.get(numPokemon);
+    } else {
+        System.out.println("Número de Pokémon no válido.");
+        return null;
+    }
+    }
+/**
      * Método gestionar equipo.
      * Un submenú que permite al usuario gestionar el equipo, agregar un pokémon al equipo de los que ya existen y entrenar a un pokémon de su equipo.
      * Complejidad temporal: O(1) Complejidad Constante.
@@ -390,3 +443,5 @@ public class Principal {
     System.out.println("Nuevo Pokémon registrado: " + nombreNuevoPokemon + " (Salud: " + saludNuevoPokemon + ", Ataque: " + ataqueNuevoPokemon + ", Tipo: " + tipo + ")");
     }
 }
+
+    
