@@ -4,7 +4,9 @@ import simulador.pokemon.Pokemon;
 
 public class Batalla { 
     
-    public void iniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){ 
+    public static Pokemon pokemon1, pokemon2; 
+    
+    public void iniciarBatalla(){ 
 
         while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) { 
             // El primer Pokémon ataca al segundo
@@ -20,5 +22,7 @@ public class Batalla {
         System.out.println(pokemon2.getNombre() + " ha sido derrotado. " + pokemon1.getNombre() + " es el ganador."); 
         } 
     } 
+    
+    
 }
 

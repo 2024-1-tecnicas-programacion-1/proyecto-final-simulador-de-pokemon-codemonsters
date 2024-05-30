@@ -2,6 +2,7 @@ package simulador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import simulador.batalla.Batalla;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Abra;
 import simulador.pokemon.Bellsprout;
@@ -68,7 +69,8 @@ public class Principal {
                     gestionarPokemones(); 
                     break; 
                 case "3": 
-                    batalla(); 
+                    Batalla batalla = new Batalla(); 
+                    batalla.iniciarBatalla();
                     break; 
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
@@ -115,7 +117,7 @@ public class Principal {
         System.out.println("Registra un nuevo entrenador"); 
         System.out.print("Ingresa el nombre: "); 
         String nombre = lector.next(); 
-        entrenadores.add(new Entrenador(nombre)); 
+        entrenadores.add(new Entrenador()); 
         System.out.println("Tu entrenador se registró. Nombre: " + nombre); 
         
     }
@@ -171,7 +173,8 @@ public class Principal {
                     agregarPokemonAlEquipo(entrenador); 
                     break; 
                 case "3": 
-                    entrenarPokemon(); 
+                    Entrenador obj = new Entrenador(); 
+                    obj.entrenarPokemon();
                     break; 
                 case "4": 
                     return; 

@@ -5,11 +5,12 @@ import java.util.List;
 import simulador.pokemon.Pokemon;
 
 public class Entrenador{ //O(1)
-    private String nombre; 
+    public static String nombre; 
     private List<Pokemon> pokemones; 
     
-    public Entrenador(String nombre){ 
-        this.nombre=nombre; 
+    public static Pokemon pokemon; 
+    
+    public Entrenador(){ 
         this.pokemones = new LinkedList<>(); 
                 
     }
@@ -19,7 +20,7 @@ public class Entrenador{ //O(1)
         } 
     }
     
-    public void entrenarPokemon(Pokemon pokemon) { //O(1)
+    public void entrenarPokemon() { //O(1)
         if (pokemones.contains(pokemon)) { 
             pokemon.entrenar(); //20 de salud y 5 de ataque         
         } 
