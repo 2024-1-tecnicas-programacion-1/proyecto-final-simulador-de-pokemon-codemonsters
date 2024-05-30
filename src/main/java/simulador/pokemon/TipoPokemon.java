@@ -1,9 +1,18 @@
 package simulador.pokemon;
-
+/**
+ * Clase tipo pokemon
+ */
 public enum TipoPokemon{ //O(1)
     
     FUEGO,AGUA,PLANTA,VENENO,ELECTRICO,PSIQUICO,ROCA,TIERRA,NORMAL,VOLADOR,HADA,LUCHA,ACERO,BICHO,HIELO,FANTASMA;
-    
+    /**
+     * Contructor de la clase
+     * @param atacante tipo de pokemon atacante 
+     * @param defensor tipo de pokemon defensor 
+     * Complejidad temporal: O(1) Complejidad Constante
+     * metodo que retorna
+     * @return 
+     */
     public static double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){ 
         
         double[][] efectividad = { //O(1)
