@@ -2,6 +2,7 @@ package simulador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import simulador.batalla.Batalla;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Abra;
 import simulador.pokemon.Bellsprout;
@@ -117,7 +118,7 @@ public class Principal {
 
     private static void verListaEntrenadores() { //O(N)
         
-        if (entrenadores.isEmpty()) { //verificar si la lista está vacía
+        if (entrenadores.isEmpty()) { //Verificar si la lista está vacía
             System.out.println("No hay entrenadores registrados."); 
         } else { 
             for (int i = 0; i < entrenadores.size(); i++) { 
@@ -148,7 +149,34 @@ public class Principal {
     }
     private static void iniciarBatalla() { //O(1)
         
-        //TODA LA LOGICA DE INICIAR BATALLA
+         if(pokemones.size() < 2) 
+            { 
+                System.out.println("No hay suficientes Pokemones para iniciar una batalla."); 
+                return; 
+             
+            } 
+
+         System.out.println("Entrenador 1, elije tu pokémon: \n 0. Ponyta. \n 1. Staryu. \n 2. Bellsprout. \n 3. Magnemite. \n 4. Abra. \n 5. Onix. \n 6. Doduo. \n 7. Meowth. \n 8. Machop. \n 9. Ekans."); 
+         int entrenadorp1 = Integer.parseInt(lector.nextLine());  
+         
+         if (entrenadorp1 < 0 || entrenadorp1 > 9 ) 
+            { 
+                System.out.println("Número inválido, no hay un pokémon en ese espacio. \n Ingrese un Pokémon de los que se muestran anteriormente. "); 
+            }
+         
+         System.out.println("Entrenador 1, elije tu pokémon: \n 0. Ponyta. \n 1. Staryu. \n 2. Bellsprout. \n 3. Magnemite. \n 4. Abra. \n 5. Onix. \n 6. Doduo. \n 7. Meowth. \n 8. Machop. \n 9. Ekans."); 
+         int entrenadorp2 = Integer.parseInt(lector.nextLine()); 
+         
+         if (entrenadorp2 < 0 || entrenadorp2 > 9 ) 
+            { 
+                System.out.println("Número inválido, no hay un pokémon en ese espacio. \n Ingrese un Pokémon de los que se muestran anteriormente. "); 
+            }
+         
+         Pokemon pokemon1 = pokemones.get(entrenadorp1); 
+         Pokemon pokemon2 = pokemones.get(entrenadorp2); 
+         
+         Batalla batalla = new Batalla(); 
+         batalla.iniciarBatalla(pokemon1, pokemon2); 
         
     }
 
@@ -260,8 +288,8 @@ public class Principal {
         
     }
     /**
-     * Metodo que registra un nuevo pokemon
-     * Complejidad lineal O(N) porque contiene un ciclo for
+     * Método que registra un nuevo pokémon.
+     * Complejidad lineal O(N) porque contiene un ciclo for.
      * 
      */
     private static void registrarNuevoPokemon() {
@@ -273,15 +301,15 @@ public class Principal {
     System.out.print("Puntos de ataque: ");
     int ataqueNuevoPokemon = lector.nextInt();
     
-    // Mostrar todos los tipos de Pokemon disponibles
-    TipoPokemon[] tipos = TipoPokemon.values();//todos los valores de TipoPokemon, es decir todos los tipos registrados de pokemon
+    // Mostrar todos los tipos de Pokémon disponibles.
+    TipoPokemon[] tipos = TipoPokemon.values();//Todos los valores de TipoPokemon, es decir todos los tipos registrados de pokémon.
     System.out.println("Tipos de Pokémon disponibles:");
     for (int i = 0; i < tipos.length; i++) {
         System.out.println((i + 1) + "." + tipos[i]);
     }
-    // Ingresar el tipo de pokemon
+    // Ingresar el tipo de pokémon.
     System.out.print("Selecciona el número del tipo de Pokémon: ");
-    int tipoSeleccionado = lector.nextInt()-1;//-1 porque el arreglo va desde 0 (el indice)
+    int tipoSeleccionado = lector.nextInt()-1;//-1 porque el arreglo va desde 0 (el índice).
     TipoPokemon tipo;
     if (tipoSeleccionado >= 0 && tipoSeleccionado < tipos.length) {
         tipo = tipos[tipoSeleccionado];
@@ -289,9 +317,9 @@ public class Principal {
         System.out.println("Número de tipo no válido. Usando tipo NORMAL por defecto.");
         tipo = TipoPokemon.NORMAL;
     }
-    // Definir el estado inicial del Pokemon
+    // Definir el estado inicial del Pokémon.
     Estado estado = Estado.NORMAL;
-    // aqui se crea un nuevo pokemon y se agrega a la lista
+    // Aqui se crea un nuevo pokémon y se agrega a la lista.
     Pokemon nuevoPokemon = new Pokemon(nombreNuevoPokemon, saludNuevoPokemon, ataqueNuevoPokemon, tipo, estado) {};
     pokemones.add(nuevoPokemon);
     System.out.println("Nuevo Pokémon registrado: " + nombreNuevoPokemon + " (Salud: " + saludNuevoPokemon + ", Ataque: " + ataqueNuevoPokemon + ", Tipo: " + tipo + ")");
