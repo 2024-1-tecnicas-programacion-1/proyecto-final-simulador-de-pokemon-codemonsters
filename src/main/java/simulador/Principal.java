@@ -170,8 +170,7 @@ public class Principal {
                     agregarPokemonAlEquipo(entrenador); 
                     break; 
                 case "3": 
-                    /*Entrenador obj = new Entrenador(); 
-                    obj.entrenarPokemon();*/ // Lógica de entrenar pokemón.
+                    entrenarPokemon(entrenador);
                     break; 
                 case "4": 
                     return; 
@@ -213,6 +212,12 @@ public class Principal {
         } else { 
             System.out.println("Número de Pokémon no válido."); 
         } 
+        
+    } 
+    
+    private static void entrenarPokemon(Entrenador entrenador) { 
+        
+        //Lógica para entrenar un pokemón 
         
     }
 
