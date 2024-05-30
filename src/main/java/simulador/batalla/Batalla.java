@@ -2,11 +2,9 @@ package simulador.batalla;
 
 import simulador.pokemon.Pokemon;
 
-public class Batalla { 
+public class Batalla {  
     
-    public static Pokemon pokemon1, pokemon2; 
-    
-    public void iniciarBatalla(){ 
+    public void iniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){ 
 
         while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) { 
             // El primer Pokémon ataca al segundo

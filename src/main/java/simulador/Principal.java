@@ -70,7 +70,6 @@ public class Principal {
                     break; 
                 case "3": 
                     iniciarBatalla();
-                    break; 
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
                     return; 
@@ -116,7 +115,7 @@ public class Principal {
         System.out.println("Registra un nuevo entrenador"); 
         System.out.print("Ingresa el nombre: "); 
         String nombre = lector.next(); 
-        entrenadores.add(new Entrenador()); 
+        entrenadores.add(new Entrenador(nombre)); 
         System.out.println("Tu entrenador se registró. Nombre: " + nombre); 
         
     }
@@ -177,8 +176,8 @@ public class Principal {
                     agregarPokemonAlEquipo(entrenador); 
                     break; 
                 case "3": 
-                    Entrenador obj = new Entrenador(); 
-                    obj.entrenarPokemon();
+                    /*Entrenador obj = new Entrenador(); 
+                    obj.entrenarPokemon();*/
                     break; 
                 case "4": 
                     return; 

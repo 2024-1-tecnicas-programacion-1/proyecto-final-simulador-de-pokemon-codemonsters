@@ -5,14 +5,14 @@ import java.util.List;
 import simulador.pokemon.Pokemon;
 
 public class Entrenador{ //O(1)
-    public static String nombre; 
+    private String nombre; 
     private List<Pokemon> pokemones; 
     
     public static Pokemon pokemon; 
     
-    public Entrenador(){ 
-        this.pokemones = new LinkedList<>(); 
-                
+    public Entrenador(String nombre){ 
+        this.nombre = nombre;
+        this.pokemones = new LinkedList<>();           
     }
     public void agregarPokemon(Pokemon pokemon) { //O(1)
         if (pokemones.size() < 6) { 
