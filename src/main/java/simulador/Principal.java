@@ -76,7 +76,7 @@ public class Principal {
                     gestionarPokemones(); 
                     break; 
                 case "3": 
-                    iniciarBatalla(Entrenador entrenador);
+                    iniciarBatalla();
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
                     return; //Sale del juego.
@@ -183,48 +183,16 @@ public class Principal {
      * En este método se inicia la batalla entre dos pokemones.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
-    private static void iniciarBatalla(Entrenador entrenador) { //O(1)
+    private static void iniciarBatalla() { //O(1)
         
-        if (entrenadores.isEmpty()) { 
-            System.out.println("No hay entrenadores registrados."); 
-            return; 
-        }
+        seleccionarEntrenador(); 
          
-         verListaEntrenadores();
-         System.out.println("¿Qué entrenador eres?"); 
-         int nEntrenador = lector.nextInt();  
-         
-         if (nEntrenador >= 0 && nEntrenador < entrenadores.size()) { 
-            Entrenador entrenadorSeleccionado = entrenadores.get(nEntrenador); 
-            gestionarEquipo(entrenadorSeleccionado); 
-        } else { 
-            System.out.println("Número de entrenador no válido."); 
-        }
-         
-         System.out.println("Elige uno de tus pokemones."); 
-         List<Pokemon> equipo = entrenador.getPokemones(); 
-        if (equipo.isEmpty()) { 
-            System.out.println("El equipo está vacío."); 
-        } else { 
-            for (Pokemon pokemon : equipo) { 
-                System.out.println(pokemon.getNombre()); 
-            } 
-        }
-         
-         verListaEntrenadores();
-         System.out.println("¿Qué entrenador eres?"); 
-         int nEntrenador2 = lector.nextInt(); 
-         
-         if (nEntrenador2 >= 0 && nEntrenador2 < entrenadores.size()) { 
-            Entrenador entrenadorSeleccionado = entrenadores.get(nEntrenador2); 
-            gestionarEquipo(entrenadorSeleccionado); 
-        } else { 
-            System.out.println("Número de entrenador no válido."); 
-        }
+        
+        
     }
     /**
      * Método gestionar equipo.
-     * Un submenú que permite al usuario gestionar el equipo, agregar un pokemon al equipo de los que ya existen y entrenar a un pokemon de su equipo.
+     * Un submenú que permite al usuario gestionar el equipo, agregar un pokémon al equipo de los que ya existen y entrenar a un pokémon de su equipo.
      * Complejidad temporal: O(1) Complejidad Constante.
      * @param entrenador recibe el parámetro entrenador, ya que el submenú es solo del entrenador ya antes seleccionado.
      * 
@@ -279,7 +247,7 @@ public class Principal {
     }
     /**
      * Método agregar pokemon al equipo.
-     * Este método permite al entrenador agregar un pokemon de la lista de pokemones del juego al equipo.
+     * Este método permite al entrenador agregar un pokémon de la lista de pokemones del juego al equipo.
      * Complejidad lineal O(N) porque contiene un ciclo for.
      * @param entrenador recibe el parámetro entrenador, ya que el submenú es solo del entrenador ya antes seleccionado.
      */
@@ -293,10 +261,10 @@ public class Principal {
         } 
         
         System.out.print("Selecciona un Pokémon por número: "); 
-        int index = lector.nextInt() - 1; 
+        int numPokemon = lector.nextInt() - 1; 
 
-        if (index >= 0 && index < pokemones.size()) { 
-            entrenador.getPokemones().add(pokemones.get(index)); 
+        if (numPokemon >= 0 && numPokemon < pokemones.size()) { 
+            entrenador.getPokemones().add(pokemones.get(numPokemon)); 
             System.out.println("Pokémon añadido al equipo."); 
         } else { 
             System.out.println("Número de Pokémon no válido."); 
@@ -309,29 +277,31 @@ public class Principal {
      * Complejidad temporal: O(1) Complejidad Constante.
      * @param entrenador recibe el parámetro entrenador.
      */
-    private static void entrenarPokemon(Entrenador entrenador) {
-    List<Pokemon> equipo = entrenador.getPokemones();
-    if (equipo.isEmpty()) {//para saber si la lista equipo esta vacia equipo.isEmpty
-        System.out.println("El equipo de Pokémon está vacío");
-    }else{
+    private static void entrenarPokemon(Entrenador entrenador) { 
+    List<Pokemon> equipo = entrenador.getPokemones(); 
+    if (equipo.isEmpty()) { //Para saber si la lista equipo esta vacía equipo.isEmpty.
+        System.out.println("El equipo de Pokémon está vacío"); 
+        
+    }else{ 
+        
+        System.out.println("Selecciona el Pokémon que deseas entrenar:"); 
 
-    System.out.println("Selecciona el Pokémon que deseas entrenar:");
-
-    for (int i = 0; i < equipo.size(); i++) {//Complejidad lineal O(N) porque contiene un ciclo for.
-        Pokemon pokemon = equipo.get(i);
+    for (int i = 0; i < equipo.size(); i++) { //Complejidad lineal O(N) porque contiene un ciclo for.
+        Pokemon pokemon = equipo.get(i); 
         System.out.println((i + 1) + "." + pokemon.getNombre() + " (Salud: " + pokemon.getSalud() + ", Ataque: " + pokemon.getPuntosDeAtaque() + ")");
     }
 
-    System.out.print("Selecciona el número del Pokémon a entrenar: ");
-    int numPokemonEntrenar = lector.nextInt() - 1;
+    System.out.print("Selecciona el número del Pokémon a entrenar: "); 
+    int numPokemonEntrenar = lector.nextInt() - 1; 
 
-    if (numPokemonEntrenar >= 0 && numPokemonEntrenar < equipo.size()) {
-        Pokemon pokemonSeleccionado = equipo.get(numPokemonEntrenar);
-        pokemonSeleccionado.entrenar();
-        System.out.println(pokemonSeleccionado.getNombre() + " ha sido entrenado. salud nueva: " + pokemonSeleccionado.getSalud() + ", ataque nuevo: " + pokemonSeleccionado.getPuntosDeAtaque());
-    } else {
-        System.out.println("Número de Pokémon no válido.");
-    }
+    if (numPokemonEntrenar >= 0 && numPokemonEntrenar < equipo.size()) { 
+        Pokemon pokemonSeleccionado = equipo.get(numPokemonEntrenar); 
+        pokemonSeleccionado.entrenar(); 
+        System.out.println(pokemonSeleccionado.getNombre() + " ha sido entrenado. salud nueva: " + pokemonSeleccionado.getSalud() + ", ataque nuevo: " + pokemonSeleccionado.getPuntosDeAtaque()); 
+    } else 
+        { 
+            System.out.println("Número de Pokémon no válido."); 
+        }
     }
 }
     /**
