@@ -8,7 +8,7 @@ import simulador.pokemon.Pokemon;
  * 
  */
 public class Entrenador{ //O(1)
-    private String nombre; 
+    private final String nombre; 
     private List<Pokemon> pokemones; 
     
     public static Pokemon pokemon; 
@@ -66,10 +66,6 @@ public class Entrenador{ //O(1)
 
     public List<Pokemon> getPokemones() { //O(1)
         return pokemones; 
-    }
-
-    public void setNombre(String nombre) { //O(1)
-        this.nombre = nombre; 
     }
 
     public void setPokemones(List<Pokemon> pokemones) { //O(1)

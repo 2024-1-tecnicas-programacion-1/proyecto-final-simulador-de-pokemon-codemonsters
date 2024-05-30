@@ -26,9 +26,9 @@ public class Batalla {
             } 
         } 
         if (pokemon2.getSalud() <= 0) { 
-            System.out.println(pokemon1.getNombre() + " ha sido derrotado. " + pokemon2.getNombre() + " es el ganador."); 
+            System.out.println(pokemon2.getNombre() + " ha sido derrotado. " + pokemon1.getNombre() + " es el ganador."); 
         } else { 
-        System.out.println(pokemon2.getNombre() + " ha sido derrotado. " + pokemon1.getNombre() + " es el ganador."); 
+        System.out.println(pokemon1.getNombre() + " ha sido derrotado. " + pokemon2.getNombre() + " es el ganador."); 
         } 
     } 
     
