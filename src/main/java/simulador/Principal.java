@@ -69,8 +69,8 @@ public class Principal {
                     gestionarPokemones(); 
                     break; 
                 case "3": 
-                    Batalla batalla = new Batalla(); 
-                    batalla.iniciarBatalla();
+                    Batalla obj = new Batalla(); 
+                    obj.iniciarBatalla();
                     break; 
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
