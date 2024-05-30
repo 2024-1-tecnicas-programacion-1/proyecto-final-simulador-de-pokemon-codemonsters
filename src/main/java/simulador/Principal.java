@@ -18,10 +18,10 @@ import simulador.pokemon.Ponyta;
 import simulador.pokemon.Staryu;
 import simulador.pokemon.TipoPokemon;
 /**
- * Clase principal
- * Se crea scanner, List(entrandor) y List(pokemon)
- * Pivate static final para poder utilizarlos en todo el codigo y para que no pueda ser cambiada después de ser asignada.
- * Inmutabilidad
+ * Clase principal.
+ * Se crea scanner, List(entrandor) y List(pokemon).
+ * Pivate static final para poder utilizarlos en todo el código y para que no pueda ser cambiada después de ser asignada.
+ * Inmutabilidad.
  * 
  */
 public class Principal { 
@@ -30,10 +30,10 @@ public class Principal {
     private static final List<Entrenador> entrenadores = new ArrayList<>(); 
     private static final List<Pokemon> pokemones = new ArrayList<>(); 
     /**
-     * Metodo principal main
-     * Inicializa todos los pokemones que hay en el juego y llama al metodo mostrarMenuPrincipal
+     * Método principal main.
+     * Inicializa todos los pokemones que hay en el juego y llama al Método mostrarMenuPrincipal.
      * Complejidad temporal: O(1) Complejidad Constante.
-     * @param args 
+     * @param args.
      */
 
     public static void main(String[] args) { //O(1)
@@ -50,8 +50,8 @@ public class Principal {
         mostrarMenuPrincipal(); 
     } 
     /**
-     * Metodo menu principal
-     * Muestra el menu principal del juego y lee la opcion del usuario por consola
+     * Método menu principal
+     * Muestra el menu principal del juego y lee la opción del usuario por consola.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
 
@@ -76,10 +76,10 @@ public class Principal {
                     gestionarPokemones(); 
                     break; 
                 case "3": 
-                    iniciarBatalla();
+                    iniciarBatalla(Entrenador entrenador);
                 case "4": 
                     System.out.println("Saliendo del juego...Hasta pronto"); 
-                    return; //sale del juego
+                    return; //Sale del juego.
                 default: 
                     System.out.println("Opción no válida, por favor intenta de nuevo."); 
                     break; 
@@ -87,9 +87,9 @@ public class Principal {
         } 
     }
     /**
-     * metodo de gestionar entrenadores 
-     * un submenu que lee la respuesta del uduario por consola
-     * para cada una de las opciones llama a un metodo correspondiente
+     * Método de gestionar entrenadores. 
+     * Un submenU que lee la respuesta del usuario por consola.
+     * Para cada una de las opciones llama a un método correspondiente.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
     private static void gestionarEntrenadores() { //O(1)
@@ -114,7 +114,7 @@ public class Principal {
                     seleccionarEntrenador(); 
                     break; 
                 case "4": 
-                    return; //retorna al menu principal
+                    return; //Retorna al menú principal.
                 default: 
                     System.out.println("Opción no válida, por favor intenta de nuevo."); 
                     
@@ -122,8 +122,8 @@ public class Principal {
         } 
     }
     /**
-     * Metodo registrar entrenador 
-     * ingresa el nombre y lo añade a la lista de entrenadores 
+     * Método registrar entrenador.
+     * Ingresa el nombre y lo añade a la lista de entrenadores.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
     private static void registrarEntrenador() { //O(1)
@@ -136,14 +136,14 @@ public class Principal {
         
     }
     /**
-     * metodo ver lista de entrenadores
-     * muestra la lista de todos los entrenadores regustrados
-     * , en caso de que no halla ninguno muestra el mensaje "no hay entrenadores registrados 
+     * Método ver lista de entrenadores.
+     * Muestra la lista de todos los entrenadores registrados.
+     * En caso de que no halla ninguno muestra el mensaje "no hay entrenadores registrados". 
      * Complejidad lineal O(N) porque contiene un ciclo for.
      */
     private static void verListaEntrenadores() { //Complejidad lineal O(N) porque contiene un ciclo for.
         
-        if (entrenadores.isEmpty()) { //Verificar si la lista está vacía
+        if (entrenadores.isEmpty()) { //Verificar si la lista está vacía.
             System.out.println("No hay entrenadores registrados."); 
         } else { 
             for (int i = 0; i < entrenadores.size(); i++) { 
@@ -153,10 +153,10 @@ public class Principal {
         
     }
     /**
-     * metodo seleccionar entrenador
-     * este metodo permite al usuario seleccionar un entrenador de los que estan registrados
-     * muestra una lista de los entrenadores registrados y lee la respuesta del usuario por consola como numero
-     * si la lista de entrenadores esta vacia muestra el mensaje "no hay entrenadores registrados"
+     * Método seleccionar entrenador.
+     * Este método permite al usuario seleccionar un entrenador de los que estan registrados.
+     * Muestra una lista de los entrenadores registrados y lee la respuesta del usuario por consola como número.
+     * Si la lista de entrenadores esta vacía muestra el mensaje "no hay entrenadores registrados".
      * Complejidad temporal: O(1) Complejidad Constante.
      */
     private static void seleccionarEntrenador() { //O(1)
@@ -179,47 +179,54 @@ public class Principal {
         
     }
     /**
-     * metodo iniciar batalla
-     * en este metodo se inicia la batalla entre dos pokemones
+     * Método iniciar batalla.
+     * En este método se inicia la batalla entre dos pokemones.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
-    private static void iniciarBatalla() { //O(1)
+    private static void iniciarBatalla(Entrenador entrenador) { //O(1)
         
-         if(pokemones.size() < 2) 
-            { 
-                System.out.println("No hay suficientes Pokemones para iniciar una batalla."); 
-                return; 
-             
+        if (entrenadores.isEmpty()) { 
+            System.out.println("No hay entrenadores registrados."); 
+            return; 
+        }
+         
+         verListaEntrenadores();
+         System.out.println("¿Qué entrenador eres?"); 
+         int nEntrenador = lector.nextInt();  
+         
+         if (nEntrenador >= 0 && nEntrenador < entrenadores.size()) { 
+            Entrenador entrenadorSeleccionado = entrenadores.get(nEntrenador); 
+            gestionarEquipo(entrenadorSeleccionado); 
+        } else { 
+            System.out.println("Número de entrenador no válido."); 
+        }
+         
+         System.out.println("Elige uno de tus pokemones."); 
+         List<Pokemon> equipo = entrenador.getPokemones(); 
+        if (equipo.isEmpty()) { 
+            System.out.println("El equipo está vacío."); 
+        } else { 
+            for (Pokemon pokemon : equipo) { 
+                System.out.println(pokemon.getNombre()); 
             } 
-
-         System.out.println("Entrenador 1, elije tu pokémon: \n 0. Ponyta. \n 1. Staryu. \n 2. Bellsprout. \n 3. Magnemite. \n 4. Abra. \n 5. Onix. \n 6. Doduo. \n 7. Meowth. \n 8. Machop. \n 9. Ekans."); 
-         int entrenadorp1 = Integer.parseInt(lector.nextLine());  
+        }
          
-         if (entrenadorp1 < 0 || entrenadorp1 > 9 ) 
-            { 
-                System.out.println("Número inválido, no hay un pokémon en ese espacio. \n Ingrese un Pokémon de los que se muestran anteriormente. "); 
-            }
+         verListaEntrenadores();
+         System.out.println("¿Qué entrenador eres?"); 
+         int nEntrenador2 = lector.nextInt(); 
          
-         System.out.println("Entrenador 1, elije tu pokémon: \n 0. Ponyta. \n 1. Staryu. \n 2. Bellsprout. \n 3. Magnemite. \n 4. Abra. \n 5. Onix. \n 6. Doduo. \n 7. Meowth. \n 8. Machop. \n 9. Ekans."); 
-         int entrenadorp2 = Integer.parseInt(lector.nextLine()); 
-         
-         if (entrenadorp2 < 0 || entrenadorp2 > 9 ) 
-            { 
-                System.out.println("Número inválido, no hay un pokémon en ese espacio. \n Ingrese un Pokémon de los que se muestran anteriormente. "); 
-            }
-         
-         Pokemon pokemon1 = pokemones.get(entrenadorp1); 
-         Pokemon pokemon2 = pokemones.get(entrenadorp2); 
-         
-         Batalla batalla = new Batalla(); 
-         batalla.iniciarBatalla(pokemon1, pokemon2); 
-        
+         if (nEntrenador2 >= 0 && nEntrenador2 < entrenadores.size()) { 
+            Entrenador entrenadorSeleccionado = entrenadores.get(nEntrenador2); 
+            gestionarEquipo(entrenadorSeleccionado); 
+        } else { 
+            System.out.println("Número de entrenador no válido."); 
+        }
     }
     /**
-     * metodo gestionar equipo
-     * un submenu que permite al usuario gestionar el equipo, agregar un pokemon al equipo de los que ya existen y entrenar a un pokemon de su equipo
+     * Método gestionar equipo.
+     * Un submenú que permite al usuario gestionar el equipo, agregar un pokemon al equipo de los que ya existen y entrenar a un pokemon de su equipo.
      * Complejidad temporal: O(1) Complejidad Constante.
-     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     * @param entrenador recibe el parámetro entrenador, ya que el submenú es solo del entrenador ya antes seleccionado.
      * 
      */
     private static void gestionarEquipo(Entrenador entrenador) { //O(1)
@@ -253,10 +260,10 @@ public class Principal {
         } 
     }
     /**
-     * metodo ver equipo
-     * metodo que muestra la lista de los pokemones que tiene el entrenador previamente seleccionado
+     * Método ver equipo.
+     * Método que muestra la lista de los pokemones que tiene el entrenador previamente seleccionado.
      * Complejidad lineal O(N) porque contiene un ciclo for.
-     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     * @param entrenador recibe el parámetro entrenador, ya que el submenú es solo del entrenador ya antes seleccionado.
      */
     private static void verEquipo(Entrenador entrenador) { //Complejidad lineal O(N) porque contiene un ciclo for.
         
@@ -271,10 +278,10 @@ public class Principal {
         
     }
     /**
-     * metodo agregar pokemon al equipo
-     * este metodo permite al entrenador agregar un pokemon de la lista de pokemones del juego al equipo
+     * Método agregar pokemon al equipo.
+     * Este método permite al entrenador agregar un pokemon de la lista de pokemones del juego al equipo.
      * Complejidad lineal O(N) porque contiene un ciclo for.
-     * @param entrenador recibe el parametro entrenador, ya que el submenu es solo del entrenador ya antes seleccionado
+     * @param entrenador recibe el parámetro entrenador, ya que el submenú es solo del entrenador ya antes seleccionado.
      */
     private static void agregarPokemonAlEquipo(Entrenador entrenador) { //O(N)
         
@@ -297,10 +304,10 @@ public class Principal {
         
     } 
     /**
-     * metodo entrenar pokemon
-     * permite al entrenador, entrenar a un pokemon de su equipo
+     * Método entrenar pokemon.
+     * Permite al entrenador, entrenar a un pokémon de su equipo.
      * Complejidad temporal: O(1) Complejidad Constante.
-     * @param entrenador recibe el parametro entrenador
+     * @param entrenador recibe el parámetro entrenador.
      */
     private static void entrenarPokemon(Entrenador entrenador) { 
         
@@ -308,10 +315,10 @@ public class Principal {
         
     }
     /**
-     * metodo gestionar pokemones
-     * este metodo permite al usuario gestionar los pokemones del juego
-     * ver todos los pojemones registrados y registrar nuevos pokemones
-     * tiene un submenu con un switch y lee la respuesta del usuario po consola
+     * Método gestionar pokemones.
+     * Este método permite al usuario gestionar los pokemones del juego.
+     * Ver todos los pokemones registrados y registrar nuevos pokemones.
+     * Tiene un submenú con un switch y lee la respuesta del usuario por consola.
      * Complejidad temporal: O(1) Complejidad Constante.
      */
     private static void gestionarPokemones() { //O(1)
@@ -341,8 +348,8 @@ public class Principal {
         
     }
     /**
-     * metodo ver pokemones registrados 
-     * este metodo muestra todos los pokemones que tiene el juego 
+     * Método ver pokemones registrados.
+     * Este método muestra todos los pokemones que tiene el juego.
      * Complejidad lineal O(N) porque contiene un ciclo for.
      */
     private static void verPokemonesRegistrados() { //Complejidad lineal O(N) porque contiene un ciclo for.
