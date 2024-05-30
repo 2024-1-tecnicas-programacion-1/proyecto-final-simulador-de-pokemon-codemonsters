@@ -29,12 +29,6 @@ public class Principal {
     private static final List<Pokemon> pokemones = new ArrayList<>(); 
 
     public static void main(String[] args) { //O(1)
-        inicializarPokemones(); 
-        mostrarMenuPrincipal(); 
-    } 
-
-    private static void inicializarPokemones() { //O(1)
-        
         pokemones.add(new Ponyta()); 
         pokemones.add(new Staryu()); 
         pokemones.add(new Bellsprout()); 
@@ -45,8 +39,8 @@ public class Principal {
         pokemones.add(new Meowth()); 
         pokemones.add(new Machop()); 
         pokemones.add(new Ekans()); 
-        
-    }
+        mostrarMenuPrincipal(); 
+    } 
 
     private static void mostrarMenuPrincipal() { 
         
