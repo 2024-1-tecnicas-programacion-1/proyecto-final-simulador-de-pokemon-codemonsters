@@ -7,6 +7,7 @@ import simulador.pokemon.Abra;
 import simulador.pokemon.Bellsprout;
 import simulador.pokemon.Doduo;
 import simulador.pokemon.Ekans;
+import simulador.pokemon.Estado;
 import simulador.pokemon.Machop;
 import simulador.pokemon.Magnemite;
 import simulador.pokemon.Meowth;
@@ -14,6 +15,7 @@ import simulador.pokemon.Onix;
 import simulador.pokemon.Pokemon;
 import simulador.pokemon.Ponyta;
 import simulador.pokemon.Staryu;
+import simulador.pokemon.TipoPokemon;
 /**
  * Clase principal
  * Se crea scanner, List(entrandor) y List(pokemon)
@@ -257,8 +259,41 @@ public class Principal {
         } 
         
     }
-
-    private static void registrarNuevoPokemon() { 
-        // Lógica para registrar un nuevo Pokémon
-    } 
+    /**
+     * Metodo que registra un nuevo pokemon
+     * Complejidad lineal O(N) porque contiene un ciclo for
+     * 
+     */
+    private static void registrarNuevoPokemon() {
+    System.out.println("Registrar un nuevo Pokémon:");
+    System.out.print("Nombre del Pokémon: ");
+    String nombreNuevoPokemon = lector.next();
+    System.out.print("Puntos de salud: ");
+    int saludNuevoPokemon = lector.nextInt();
+    System.out.print("Puntos de ataque: ");
+    int ataqueNuevoPokemon = lector.nextInt();
+    
+    // Mostrar todos los tipos de Pokemon disponibles
+    TipoPokemon[] tipos = TipoPokemon.values();//todos los valores de TipoPokemon, es decir todos los tipos registrados de pokemon
+    System.out.println("Tipos de Pokémon disponibles:");
+    for (int i = 0; i < tipos.length; i++) {
+        System.out.println((i + 1) + "." + tipos[i]);
+    }
+    // Ingresar el tipo de pokemon
+    System.out.print("Selecciona el número del tipo de Pokémon: ");
+    int tipoSeleccionado = lector.nextInt()-1;//-1 porque el arreglo va desde 0 (el indice)
+    TipoPokemon tipo;
+    if (tipoSeleccionado >= 0 && tipoSeleccionado < tipos.length) {
+        tipo = tipos[tipoSeleccionado];
+    } else {
+        System.out.println("Número de tipo no válido. Usando tipo NORMAL por defecto.");
+        tipo = TipoPokemon.NORMAL;
+    }
+    // Definir el estado inicial del Pokemon
+    Estado estado = Estado.NORMAL;
+    // aqui se crea un nuevo pokemon y se agrega a la lista
+    Pokemon nuevoPokemon = new Pokemon(nombreNuevoPokemon, saludNuevoPokemon, ataqueNuevoPokemon, tipo, estado) {};
+    pokemones.add(nuevoPokemon);
+    System.out.println("Nuevo Pokémon registrado: " + nombreNuevoPokemon + " (Salud: " + saludNuevoPokemon + ", Ataque: " + ataqueNuevoPokemon + ", Tipo: " + tipo + ")");
+    }
 }
