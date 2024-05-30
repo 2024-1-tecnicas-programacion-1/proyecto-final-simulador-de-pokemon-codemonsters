@@ -6,11 +6,11 @@ public enum TipoPokemon{ //O(1)
     
     FUEGO,AGUA,PLANTA,VENENO,ELECTRICO,PSIQUICO,ROCA,TIERRA,NORMAL,VOLADOR,HADA,LUCHA,ACERO,BICHO,HIELO,FANTASMA;
     /**
-     * Contructor de la clase
-     * @param atacante tipo de pokemon atacante 
-     * @param defensor tipo de pokemon defensor 
-     * Complejidad temporal: O(1) Complejidad Constante
-     * metodo que retorna
+     * Contructor de la clase.
+     * @param atacante tipo de pokémon atacante.
+     * @param defensor tipo de pokémon defensor.
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * Método que retorna.
      * @return 
      */
     public static double obtenerMultiplicadorDeDaño(TipoPokemon atacante, TipoPokemon defensor){ 

@@ -2,7 +2,6 @@ package simulador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import simulador.batalla.Batalla;
 import simulador.entrenador.Entrenador;
 import simulador.pokemon.Abra;
 import simulador.pokemon.Bellsprout;

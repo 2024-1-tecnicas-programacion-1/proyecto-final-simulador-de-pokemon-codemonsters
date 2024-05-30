@@ -15,14 +15,14 @@ public abstract class Pokemon {
     private Estado estado; 
     //O(1)
     /**
-     * Contructor de la clase
-     * @param nombre nombre del pokemon
-     * @param salud salud del pokemon
-     * @param puntosDeAtaque puntos de ataque del pokemon
-     * @param tipo tipo del pokemon
-     * @param estado estado del pokemon 
+     * Contructor de la clase.
+     * @param nombre nombre del pokémon.
+     * @param salud salud del pokémon.
+     * @param puntosDeAtaque puntos de ataque del pokémon.
+     * @param tipo tipo del pokémon.
+     * @param estado estado del pokémon. 
      * 
-     * Complejidad temporal: O(1) Complejidad Constante
+     * Complejidad temporal: O(1) Complejidad Constante.
      * 
      */
     public Pokemon(String nombre, int salud, int puntosDeAtaque, TipoPokemon tipo, Estado estado) { 
@@ -33,10 +33,10 @@ public abstract class Pokemon {
         this.estado = estado; 
     }
     /**
-     * Metodo que ataca al oponente
+     * Método que ataca al oponente.
      * 
-     * Complejidad temporal: O(1) Complejidad Constante
-     * @param oponente 
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @param oponente.
      */
     public void atacar(Pokemon oponente) { //O(1)
         int daño = oponente.getPuntosDeAtaque() - oponente.getSalud(); 
@@ -46,24 +46,24 @@ public abstract class Pokemon {
         oponente.recibirDaño(daño); 
     }
     /**
-     * Metodo que recibe el daño del oponente 
+     * Método que recibe el daño del oponente. 
      * 
-     * Complejidad temporal: O(1) Complejidad Constante
-     * @param daño 
+     * Complejidad temporal: O(1) Complejidad Constante.
+     * @param daño.
      */
     public void recibirDaño(int daño) { //O(1) 
         this.salud -= daño; 
     }
     /**
-     * Metodo para entrenar a un pokemon 
-     * Complejidad temporal: O(1) Complejidad Constante
+     * Método para entrenar a un pokémon. 
+     * Complejidad temporal: O(1) Complejidad Constante.
      */
     public void entrenar(){ //O(1) 
        this.salud = salud+20; 
        this.puntosDeAtaque = puntosDeAtaque+5; 
     }
 /**
- * Get y set de todos los parametros en el contructor 
+ * Get y set de todos los parámetros en el contructor. 
  * 
  */
     public String getNombre() { //O(1)

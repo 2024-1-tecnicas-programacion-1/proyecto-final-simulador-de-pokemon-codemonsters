@@ -1,13 +1,13 @@
 package simulador.pokemon;
 /**
- * Clase Ekans
- * Clase que hereda todos los parametros de la clase padre pokemon
+ * Clase Ekans.
+ * Clase que hereda todos los parámetros de la clase padre Pokemon.
  * 
  */
 public class Ekans extends Pokemon { 
     /**
-     * Metodo Ekans, que contiene toda la informacion del pokemon
-     * Complejidad temporal: O(1) Complejidad Constante
+     * Método Ekans, que contiene toda la información del pokémon.
+     * Complejidad temporal: O(1) Complejidad Constante.
      */
     public Ekans() { //O(1)
         super("Ekans", 35, 60, TipoPokemon.VENENO, Estado.NORMAL); 

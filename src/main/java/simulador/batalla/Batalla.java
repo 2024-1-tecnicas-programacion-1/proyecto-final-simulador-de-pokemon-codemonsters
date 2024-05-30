@@ -2,26 +2,26 @@ package simulador.batalla;
 
 import simulador.pokemon.Pokemon;
 /**
- * Clase publica Batalla
+ * Clase pública Batalla.
  * 
  */
 public class Batalla {  
     /**
-     * Constructor de la clase
-     * Void iniciarBatalla, metodo que tiene toda la logica de la batalla entre los dos 
-     * pokemones
-     * @param pokemon1 parametro 1
-     * @param pokemon2 parametro 2
+     * Constructor de la clase. 
+     * Void iniciarBatalla, método que tiene toda la lógica de la batalla entre los dos. 
+     * Pokemones. 
+     * @param pokemon1 parametro 1.
+     * @param pokemon2 parametro 2.
      * 
-     * Complejidad temporal: O(1) Complejidad Constante
+     * Complejidad temporal: O(1) Complejidad Constante.
      */
     public void iniciarBatalla(Pokemon pokemon1, Pokemon pokemon2){ 
 
         while (pokemon1.getSalud() > 0 && pokemon2.getSalud() > 0) { 
-            // El primer Pokémon ataca al segundo
+            // El primer Pokémon ataca al segundo.
             pokemon1.atacar(pokemon2); 
             if (pokemon2.getSalud() > 0) { 
-                // El segundo Pokémon ataca al primero
+                // El segundo Pokémon ataca al primero.
                 pokemon2.atacar(pokemon1); 
             } 
         } 

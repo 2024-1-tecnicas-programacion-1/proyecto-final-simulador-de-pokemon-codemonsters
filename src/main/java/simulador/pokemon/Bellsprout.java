@@ -1,12 +1,12 @@
 package simulador.pokemon;
 /**
- * Clase Bellsprout
- * clase que hereda todos los parametros de la clase padre pokemon
+ * Clase Bellsprout.
+ * Clase que hereda todos los parámetros de la clase padre Pokemon.
  */
 public class Bellsprout extends Pokemon { 
     /**
-     * metodo que contiene toda la informacion del pokemon
-     * Complejidad temporal: O(1) Complejidad Constante
+     * Método que contiene toda la información del pokémon.
+     * Complejidad temporal: O(1) Complejidad Constante.
      */
     public Bellsprout() { //O(1)
         super("Bellsprout", 50, 75, TipoPokemon.PLANTA, Estado.NORMAL ); 
